@@ -1,0 +1,64 @@
+<apex:page standardController="Account" recordSetVar="tharun">
+    <apex:tabPanel>
+        <apex:tab label="Lead information">
+            <apex:pageBlock>
+                <apex:pageBlockSection columns="1">
+                    <apex:listViews type="Lead"/>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="Account information">
+            <apex:pageBlock>
+                <apex:pageBlockSection>
+                    <apex:dataTable value="{!tharun}" var="ac">
+                        <apex:column >
+                            <apex:outputText>Name:
+                                <apex:outputField value="{!ac.Name}"/>
+                            </apex:outputText>
+                            <apex:outputText>Rating:
+                                <apex:outputField value="{!ac.Rating}" style="color:red"/>
+                            </apex:outputText>
+                            <apex:outputText>Phone:
+                                <apex:outputField value="{!ac.Phone}"/>
+                            </apex:outputText>
+                        </apex:column>
+                    </apex:dataTable>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="Account information in differnet">
+            <apex:pageBlock>
+                <apex:pageBlockSection>
+                    <apex:dataList value="{!tharun}" var ="ae">
+                        <apex:outputField value="{!ae.Name}" />
+                        <apex:outputField value="{!ae.Rating}"/>
+                        <apex:outputField value="{!ae.Type}"/>
+                    </apex:dataList>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="Account records">
+            <apex:pageBlock>
+                <apex:pageBlockSection columns="1">
+                    <apex:pageBlockTable value="{!tharun}" var= "ar">
+                        <apex:column value="{!ar.Name}"/>
+                        <apex:column value="{!ar.AccountNumber}"/>
+                        <apex:column value="{!ar.Phone}"/>
+                        <apex:column value="{!ar.Industry}"/>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:tab>
+        <apex:tab label="Data table Account display">
+            <apex:pageBlock>
+                <apex:pageBlockSection columns="1">
+                    <apex:dataTable value="{!tharun}" var="aq">
+                        <apex:column value="{!aq.Name}" headerValue="Name"/>
+                        <apex:column value="{!aq.Type}" headerValue="Type"/>
+                        <apex:column value="{!aq.Rating}" headerValue="Rating"/>
+                    </apex:dataTable>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:tab>
+    </apex:tabPanel>
+</apex:page>
