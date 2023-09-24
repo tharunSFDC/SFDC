@@ -1,0 +1,210 @@
+1)• Write an APEX program, to Find out the Student Result as below.
+• We have the 5 Subjects (English, Math's, Physics, Chemistry, Hindi)
+• Pass: if the student got more than 40 Marks in each subject
+• Fail: IF the student got less than 40marks in any of the Subject.
+
+Ans) // Conditional Statements
+
+integer English = 15;
+integer math = 45;
+integer physics = 52;
+integer chemisrty = 60;
+integer Hindi = 78;
+integer total = English+math+physics+chemisrty+Hindi;
+integer average;
+
+if( English > 40 && math > 40 && physics > 40 && chemisrty > 40 && Hindi > 40)
+{
+    system.debug('student pass');
+    average = total/5;
+    
+    
+}
+else{
+    system.debug('Student failed better luck next time');
+}
+
+//-------------------------------------------------------------//
+2)• Write an APEX program, to Find out the Bill Amount of the Customer based on the Quantity and
+Unit Price. And Offer the discount as below.
+1. Amount> 10,00 then Offer 20% discount
+2. Else No Discount Provided to Customer
+
+Ans)  // Find out Bill Amount of the Customer Based in the Quantity adn Unit Price
+
+integer quantity = 2;
+double Unitprice = 10000;
+double Amount = quantity * Unitprice;
+string offers;
+if (Amount > 10000){
+    
+    offers = '20% is applied';
+    system.debug('offer is applied' + offers);
+    
+    
+}
+else{
+    
+    system.debug('sorry your not engliable for the offers');
+}
+
+//-----------------------------------------------------------------------//
+3)
+  • Write an apex Program, to print the Month Name based on the
+Month Number as below.
+
+• Month Number Month Name
+• ---------------------------------------------------------------------------------
+• 1 January
+• 2 February
+• ....
+• 12 December
+• <1 Or >12 Invalid Month Number
+
+Ans)  // Apex program to print the Month Name based on the 
+
+integer monthname = 1;
+
+if (monthname == 1){
+    system.debug('january');
+}
+else if ( monthname == 2){
+    system.debug('February');
+}
+else if (monthname == 3){
+    system.debug('March');
+}
+else if(monthname == 4){
+    system.debug('Aprial');
+}
+else if(monthname == 5){
+    system.debug('May');
+}
+else if (monthname == 6){
+    system.debug('June');
+}
+else if (monthname == 7){
+    system.debug('july');
+}
+else if (monthname == 8){
+    system.debug('Auguest');
+}
+else if (monthname == 9){
+    system.debug('Setmpber');
+}
+else if (monthname == 10){
+    system.debug('October');
+}
+else if (monthname == 11){
+    system.debug('Novmember');
+}
+else if(monthname == 12){
+    system.debug('December');
+}
+else{
+    system.debug(' enter valid in between 1 to 12');
+}
+
+
+///---------------------------------------------------------------------------------------------//
+4) BY using nested if  condition
+
+• Write an apex Program, to find out the student Result and Grade as below.
+• 5 Subjects for Student (Ex: English, Hindi, Math's, Physics, Chemistry)
+• Calculate the Total Marks of the Student.
+• Find Out the Student Result.
+• PASS : If the Student got more than 40 marks in each Subject.
+• Print the Student Result and Total Marks.
+• Calculate the Average Marks of the Student.
+• Find out the Student Grade as below.
+• Average Marks Grade
+• ----------------------------------------------
+• >=60 GRADE A
+• >=50 && <60 GRADE B
+• >=40 && <50 GRADE C
+
+• Fail: If the student got less than 40marks in any of the subject.
+• Print the student Result and Total Marks.
+Ans)  //Nested if condition
+
+// to find out the sutdet result and grade.
+
+integer English = 100;
+integer math = 45;
+integer physics = 52;
+integer chemisrty = 60;
+integer Hindi = 78;
+integer total = English+math+physics+chemisrty+Hindi;
+integer average;
+
+if( English > 40 && math > 40 && physics > 40 && chemisrty > 40 && Hindi > 40)
+{
+    average = total/5;
+    system.debug('student passed'+average+ 'total markes' + total);
+    if(average >=60){
+        system.debug('GRADE A');
+    }
+    else if ( average >=50 && average <=60){
+        system.debug('GRADE B');
+    }
+    else if (average >=40 && average <=50){
+        system.debug('GRADE C');
+    }
+    
+} else{
+    system.debug('Student failed'+ 'Total markes'+total);
+}
+
+//--------------------------------------------------------//
+5)
+• Write an apex Program, for Indian railway ticket program using Nested if-Else
+Statement
+
+• Age Text Message
+• ---------------------------------------------------------------------------------
+• <=5 You have 100% discount on your Ticket
+• <=12 You have 50%discount on your Ticket
+• <=26 You have 10% discount on your ticket
+• >60 You have 25% discount on your ticket
+• <1 You are not allowed to travel
+Ans) integer age = 61;
+
+if(age >=1 && age<=5){
+    system.debug('you have 100% discount on your ticket');
+}else if (age >=5 && age<=12){
+    system.debug('you have 50% discount on your ticket');
+}else if (age >=12 && age<=26){
+    system.debug('you have 10% discount on your ticket');
+}else if(age>60){
+    system.debug('you have 25% discount on your ticket');
+}else{
+    system.debug('your not allowed to travel');
+}
+
+
+//--------------------------------------------------------------------//
+6)• Write an apex Program, to know you are eligible to work using
+Nested if-Else Statement
+
+• Age Text Message
+• ---------------------------------------------------------------------------------
+• <18 You are Minor...Not Eligible to work
+• >=18 && <=60 You are Eligible to Work
+• Else You are too old to work as per the Government
+rules
+Ans)  
+integer age =10;
+
+if(age<18){
+    system.debug('you are minor not eligible to work');
+}else if (age>=18 && age<=60){
+    system.debug('your are eligible to work');
+}else{
+    system.debug('You are too old to work as per the Government');
+}
+
+
+
+
+
+
