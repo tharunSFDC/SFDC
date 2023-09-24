@@ -1,0 +1,30 @@
+// Areas of the cylinder program
+
+integer r = 10;
+integer h = 20;
+double a = 2*3.14*r*h+2*3.14*100;
+system.debug('Areas of Cylinder' + a);
+
+// To find Surface Area of Cone
+
+Integer r = 5;
+double s= 6.54;
+double pi;
+pi = 3.14*r*s+3.14*r*r;
+system.debug('Surface Area of Cone' + pi);
+
+// Program to find Areas of Circle
+
+integer r = 10;
+double c = 3.14*100;
+system.debug('Areas of Circle' + c);
+
+
+//  Program to find 5% Tax on Income
+
+integer grossalary = 100000;
+integer totaldeduction = 25000;
+integer totalexemptions = 25000;
+double taxableincome = grossalary-totaldeduction-totalexemptions;
+double taxonincome = taxableincome*5/100;
+system.debug(taxonincome);
