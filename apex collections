@@ -1,0 +1,161 @@
+• Implement list collection to store the country names and print each value
+Ans)//• Implement list collection to store the country names and print each value
+
+List<string> Countrynames= new list<string>{'India','USA','Canada','Irland','UK'};
+    
+    for(string tha:Countrynames){
+        system.debug('This are CountryNames:'+tha);
+    }
+
+--------------------------------
+• implement List Collection to store 5 Mobile Numbers and print each value
+Ans) List<double> MobileNumber =new list<double>{7013094018l,9874875478l,6987458965l,7894874568l};
+   
+for(double ph:MobileNumber){
+    system.debug(ph);
+    
+}
+-------------------------------------
+• implement List Collection to store Family member Names and print each value
+Ans) //• implement List Collection to store Family member Names and print each value
+
+list<string> familymembernames = new list<string>{'Tharun','poorna','naidu','Chandra babu naidu','Lokesh'};
+    for(string name:familymembernames){    
+        system.debug('FamilymemberNames:'+name);
+    }
+------------------------------------------------------
+• implement a List Collection to store iPhone model Names and print each value.
+Ans)//implement a List Collection to store iPhone model Names and print each value.
+
+list<string> iPhones = new list<string>{'iPhone15','iPhone14','iPhonepromax','iPhone13pro'};
+    for(string ip:iPhones){
+        system.debug('iPhone Models:'+ip);
+    }
+-----------------------------------------------------------
+• Frank
+• Louis
+• Albert
+• Jackson
+• Freddie
+• Justin
+• fRank
+• ALBERT
+• Sort Order
+• Get length
+• Get the 5 index value
+Ans) list<string> testcase = new list<string>();
+testcase.add('Justin');
+testcase.add('Frank');
+testcase.add('Louis');
+testcase.add('Albert');
+testcase.add('Jackson');
+testcase.add('Freddie');
+testcase.add('Justin');
+testcase.add('fRank');
+testcase.add('AlBERT');
+system.debug(testcase);
+testcase.sort();
+system.debug(testcase);
+system.debug(testcase.get(5));
+system.debug(testcase.size());
+------------------------------------------------------
+• Write a APEX Code to add following Name in collection, should allow Duplicate values
+• San Francisco
+• New York
+• Paris
+• Tokyo
+• 1234
+• Freddie
+• Justin
+• fRank
+• ALBERT
+• Sort Order
+• Get length
+• Remove 1234 from collection
+Ans) list<string> testc=new list<string>();
+testc.add('San Francisco');
+testc.add('new York');
+testc.add('Paris');
+testc.add('Tokyo');
+testc.add('1234');
+testc.add('Freddie');
+testc.add('Justin');
+testc.add('fRank');
+testc.add('ALBERT');
+system.debug('Normal order'+testc);
+testc.sort();
+system.debug('Sorted order list:'+ testc);
+system.debug('Length of the list:'+ testc.size());
+testc.remove(0);
+system.debug('Removed the 1234 in the list:'+ testc);
+----------------------------------------------------------------------
+Implement a Code to create 5 new Opportunity records by adding them to list
+Ans) // Impemement a code to create 5 new opportunity records by adding them to list
+list<Opportunity> testcase2 = new list<Opportunity>();
+Opportunity op = new Opportunity(Name='testclass',StageName='Prospecting',CloseDate=Date.Today());
+Opportunity op1= new Opportunity(Name='testcalss1',StageName='Prospecting',CloseDate=Date.Today());
+Opportunity op2 = new Opportunity(Name = 'testclass2',StageName='Prospecting',CloseDate=Date.Today());
+Opportunity op3 = new Opportunity (Name = 'testclass3',StageName='Prospecting',CloseDate=Date.Today());
+Opportunity op4 = new Opportunity (Name = 'testclass4',StageName='Prospecting',CloseDate=Date.Today());
+testcase2.add(op);
+testcase2.add(op1);
+testcase2.add(op2);
+testcase2.add(op3);
+testcase2.add(op4);
+insert testcase2;
+for(Opportunity test:testcase2){
+    system.debug('These are Opportunity records created in salesforce:'+ test);
+}
+----------------------------------------------------------------------------------
+Implement a code to create 2 new Lead Records
+Ans)//Implement a code to create 2 new Lead Records
+list<Lead> newlead = new list<Lead>();
+Lead testcase = new Lead(LastName='Last Name',Company='salesforce',MobilePhone='784151');
+Lead testcase1= new Lead(LastName='Last Name',Company='salesforce',MobilePhone='784151');
+newlead.add(testcase);
+newlead.add(testcase1);
+insert newlead;
+for(Lead yt:newlead){
+    system.debug('New leads are created'+ newlead);
+}
+---------------------------------------------------------------
+
+Implement APEX code to Store following Data
+
+Ans)
+// imlement nested
+
+list<list<string>> nestedlist = new list<list<string>>();
+
+list<string> test = new list<string>{'mumba','Delhi','Bangal','Hderabad'};
+list<string> test1 = new list<string>{'chicag','New York','Sen Diego','Dallas'};
+list<string> test2 = new list<string>{'Ely','Derbay','Bistol','Derby'};
+list<string> test3 = new list<string>{'Ber','Hamburg','Munchin','Born'};
+nestedlist.add(test);
+nestedlist.add(test1);
+nestedlist.add(test2);
+nestedlist.add(test3);
+system.debug(nestedlist);
+---------------------------------------------------------------------------
+Write a APEX Code to add following Name in collection
+iphone x = 70000,
+nokia = 60000,
+samsung = 50000
+Motorola = 40000
+Get value by passing Key
+Get All Values
+
+
+Ans) map<string,integer> fortest = new map<string,integer>();
+fortest.put('iphonex',70000);
+fortest.put('nokia', 600000);
+fortest.put('samsung', 50000);
+fortest.put('Motorola', 40000);
+system.debug(fortest);
+system.debug(fortest.get('iphonex'));
+system.debug(fortest.get('nokia'));
+system.debug(fortest.get('samsung'));
+system.debug(fortest.get('Motorola'));
+__________________________________________________________________________________________________________________________
+_--------------------------------------------------------  END------------------------------------------------------------
+____________________________________________________________________________________________________________________________
