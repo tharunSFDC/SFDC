@@ -1,0 +1,135 @@
+// Create a account record
+Account newacc = new Account();
+newacc.Name = 'fortestrelated';
+newacc.Rating='Hot';
+newacc.AccountNumber ='654sf';
+newacc.Type='Prospect';
+newacc.Industry = 'Apparel';
+insert newacc;
+// Create the contact for the account realted list
+if(newacc.id!=null){
+    Contact con = new Contact ();
+    con.LastName = 'foraccountrealted';
+    con.Phone = '78458742';
+    con.Department='Internal Operations';
+    con.Accountid =newacc.id;
+    insert con;
+      
+}
+
+// Create the account realted opportunitys
+
+Account acc1 = new Account();
+acc1.Name = 'account and oppo';
+acc1.Rating = 'Hot';
+acc1.AccountNumber='6587';
+acc1.Type ='Prospect';
+acc1.Industry ='Apparel';
+insert acc1;
+
+if(acc1.id!=null){
+    
+   Opportunity oppo = new Opportunity();
+    oppo.Name = 'for account oppo';
+    oppo.Accountid=acc1.id;
+    oppo.CloseDate = system.today()+30;
+    oppo.stagename = 'Qualification';
+    oppo.Type = 'New Customer';
+    insert oppo;
+}
+
+// create a account for the case realted
+
+Account acc2 = new Account();
+acc2.Name = 'for Account case object';
+acc2.Rating='Hot';
+acc2.Accountnumber='7485946';
+acc2.Type='Prospect';
+acc2.Industry ='Apparel';
+insert acc2;
+
+if(acc2.id!=null){
+    
+    Case ca = new case();
+    ca.Status = 'New';
+    ca.Accountid=acc2.id;
+    ca.Type='Other';
+    ca.Reason='Other';
+    ca.Origin='Phone';
+    insert ca;    
+    
+}
+
+
+
+// creatin the hiring manager record inside the salesforce object
+
+Hiring_Manager_Record__c  hm = new Hiring_Manager_Record__c();
+hm.Name ='Poorna';
+hm.Name__c='This for the related records creation';
+hm.id ='a065g00000OuUSR';
+update hm;
+if(hm.id!=null){
+    
+    Position__c po = new Position__c();
+    po.Name='github';
+    po.Functional_Area__c='Information';
+    po.Hiring_Manager_Record__c =hm.id;
+    po.Job_Description__c='This position for the github account manager position';
+    update po;
+    if(po.id!=null){
+        Candidate__c  ca = new Candidate__c();
+        ca.First_Name__c	='lokesh';
+        ca.Email__c='lokesh@gmail.com';
+        ca.Position__c = po.id;
+        ca.Mobile__c='4785412595';
+        ca.Last_Name__c='bash';
+        update ca;
+
+    }
+}else{
+    system.debug('sorry system failed to create record inside salesforce object');
+}
+
+//4. Write an apex Program to insert an Account Record and related Contact and Opportunity
+//and Case records inside the Object
+//• Account Object (parent)
+//• | -- Contact(Child)
+//• | -- Opportunity (Child)
+//• | -- Case (Child)
+
+Account acc3 = new Account ();
+acc3.name = 'for contact,case,oppo,';
+acc3.rating='Hot';
+acc3.Accountnumber='748596';
+acc3.Type='Prospect';
+acc3.Annualrevenue=7845632;
+insert acc3;
+
+if(acc3.id!=null){
+    
+    Contact con1 = new Contact ();
+    con1.LastName ='for account realted contact';
+    con1.Phone='74865487';
+    con1.Accountid = acc3.id;
+    con1.Department='Cse';
+    insert con1;
+    
+    Opportunity opp1 = new Opportunity();
+    opp1.name='oppo1 for account realted ';
+    opp1.Stagename='Qualification';
+    opp1.closedate=system.today()+9;
+    opp1.Accountid=acc3.id;
+    opp1.LeadSource='Web';
+    opp1.type='New Customer';
+    insert opp1;
+    
+    case ca1 = new case();
+    ca1.Accountid=acc3.id;
+    ca1.Type='Other';
+    ca1.origin='Phone';
+    ca1.Status ='New';
+    insert ca1;
+}else{
+    system.debug('sorry system failed recrods are not created inside salesforce');
+}
