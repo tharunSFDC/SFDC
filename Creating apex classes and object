@@ -1,0 +1,145 @@
+• Define an APEX Class to manage Product Details.
+• productName
+• ProductCode
+• quantity
+• contactNumber
+• manufactringDate
+• expireDate
+• UnitPrice
+• isInStock
+Ans) public class Productdetails {
+    
+    public string ProductName;
+    public string ProductCode;
+    public integer quantity;
+    public string ContactNumber;
+    public date Manufactringdate;
+    public date Expiredate;
+    public integer UnitPirce;
+    public Boolean isInstock;
+
+}
+________________________________________________________________
+• Define an APEX Class to manage Client Details.
+• clientName
+• clientLocation
+• projectName
+• Revenue
+• isItNewClient
+Ans)public class Clieantdetails {
+    
+    public string clientName;
+    public string Location;
+    public string ProjectName;
+    public integer Revenue;
+    public boolean isitnewclient;
+
+}
+____________________________________________________________________________
+• Define an APEX Class to manage Customer Details.
+• customerName
+• customerNumber
+• isVIPCustomer
+Ans) public class Customerdetails {
+    
+    public string customerName;
+    public integer customerNumber;
+    public boolean isVIPcustomer;
+
+}
+______________________________________________________________________________________________
+• Define an APEX Class to manage project Details.
+• projectName
+• projectState
+• ProjectName
+• members
+• projectStartDate
+• projectEndDate
+Ans) public class Projectdetails {
+    
+    public string ProjectName;
+    public string projectState;
+    public string members;
+    public date projectstartdate;
+    public date projectenddate;
+
+}
+_____________________________________________________________________________
+• Define an APEX Class to manage student Details.
+• studentName
+• studentId
+• classNumber
+• CourseName
+Ans) public class Studentdetails {
+    public string studentName;
+    public string studentId;
+    public integer classnumber;
+    public string courseName;
+
+}
+
+---------------------------------------------------------------------------------
+Create an Apex class to manage the Employee Details and Assign the values and Retrieve the values from the members by using object of the class.
+Ans) public class Employeedetail {
+    
+    public string empid;
+    public string empName;
+    public double empPhone;
+    public string emailid;
+    public date joingdate;
+
+}
+Employeedetail edetails = new Employeedetail();
+edetails.empid='EMP001';
+edetails.empName = 'Tharun';
+edetails.empPhone= 7013094018l;
+edetails.emailid = 'tharuncse508@gmail.com';
+edetails.joingdate= system.today();
+system.debug('Empyeedetails'+edetails);
+Output:
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Create an Apex class to manage the customer Details and Assign the values and print the values by using and “Object”
+Ans) public class Customerdetails {
+    
+    public string customerName;
+    public double customerNumber;
+    public boolean isVIPcustomer;
+
+}
+// Create the customerdetails object for the class and passing the values
+
+Customerdetails cdetails = new Customerdetails();
+
+cdetails.customerName='Poorna chandra reddy';
+cdetails.customerNumber=98541236578l;
+cdetails.isVIPcustomer=true;
+system.debug('Customer details'+cdetails);
+------------------------------------------------------------------------------------------------
+
+Create an Apex class to manage the Product Details and Assign the values and Print the values.
+Ans) public class Productdetails {
+    
+    public string ProductName;
+    public string ProductCode;
+    public integer quantity;
+    public string ContactNumber;
+    public date Manufactringdate;
+    public date Expiredate;
+    public integer UnitPirce;
+    public Boolean isInstock;
+
+}
+// create the Product details object for the class to pass the values to variables.
+
+Productdetails pdetails = new Productdetails();
+pdetails.ProductName='Sumsung A34';
+pdetails.ProductCode = 'SM001';
+pdetails.quantity = 1;
+pdetails.ContactNumber = '57894125369';
+pdetails.Manufactringdate = system.today();
+pdetails.Expiredate = system.today()+7;
+pdetails.UnitPirce = 30000;
+pdetails.isInstock = true;
+system.debug('Product details'+pdetails);
+
