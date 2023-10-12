@@ -1,0 +1,132 @@
+Write an apex program,to insert a position inside the object
+Ans) /* @ Desc:This class for the for position object creation
+ * @Author: Tharun Panguluru
+ * @created date: 07/10/2023
+ */
+public class forposition {
+    /* @Desc:Creating new position recrod.
+     * @Author: Tharun Panguluru
+     * @created date: 07/10/2023
+     */
+    public static void newpos(){
+        Position__c pos = new Position__c();
+        pos.Name ='LWC';
+        pos.Type__c='• Full Time';
+        pos.Status__c='Approved';
+        pos.APEX__c=true;
+        pos.Lightning__c=true;
+        insert pos;
+    }
+}
+forposition.newpos();
+
+
+
+Output:
+
+Create an apex program, to insert 100 case inside the object.
+Ans) /*
+ * Desc: This class for the newcases
+ * author:Tharun Panguluru
+ * createdate:06/10/2023
+ */
+
+public class forcreatingcase {
+ /*
+ * Desc: This method for creating cases inside the salesforce org
+ * author:Tharun Panguluru
+ * createdate:06/10/2023
+ */
+
+    public static void forcreatingcases(){
+        list<Case> fornewcase = new list<Case>();
+        for(integer i = 1; i<=100; i++){
+            Case newcases = new Case();
+            newcases.Status='New';
+            newcases.AccountId='0015g00001QG6SEAA1';
+            newcases.Type='Other';
+            newcases.Reason='Other';
+            newcases.Origin='Email';
+            newcases.Priority='Medium';
+            fornewcase.add(newcases);
+        }
+        if(!fornewcase.isempty()){
+            insert fornewcase;
+        }
+        else{
+            system.debug('Sorry the recrods are not crated check your code');
+        }
+                }
+}
+Output:
+
+
+
+
+Create an apex program, to insert a hiring manager records and related position record
+Ans) /*
+ * Desc: This class for the hiring records
+ * author:Tharun Panguluru
+ * createdate:06/10/2023
+ */
+public class hiringmanagerrecords {
+    
+    /*
+ * Desc: This method for creating hiring manager recrods and related recrods.
+ * author:Tharun Panguluru
+ * createdate:06/10/2023
+ */
+    public static void hmpo(){
+        Hiring_Manager_Record__c hr = new Hiring_Manager_Record__c();
+        hr.Name = 'Roopa';
+        hr.Name__c='poorna';
+        insert hr;
+        if(hr!=null){
+             Position__c pos = new Position__c();
+             pos.Name ='Aura';
+             pos.Type__c='• Full Time';
+             pos.Status__c='Approved';
+             pos.APEX__c=true;
+             pos.Hiring_Manager_Record__c=hr.Id;
+             pos.Lightning__c=true;
+             insert pos;
+  
+        }
+    }
+
+}
+Output:
+
+•4)Write an apex Program , to create 50 contact Record inside the object.
+Ans) /*
+ * Desc: This class for the contact records
+ * author:Tharun Panguluru
+ * createdate:06/10/2023
+ */
+public class forcontact {
+    /*
+     * Desc: This method for the contact records
+     * author:Tharun Panguluru 
+     * createdate:06/10/2023
+     */
+    public static void contactnew(){
+        list<Contact> newcon = new list<Contact>();
+        for(integer i=1;i<=50;i++){
+            Contact con = new Contact();
+            con.FirstName='for'+i;
+            con.LastName='con'+i;
+            con.Email='for@gmail.com'+i;
+            con.LeadSource='Web';
+            con.AccountId='0015g00001PAq55AAD';
+            con.Department='ECE'+i;
+            con.Phone='8844645'+i;
+            newcon.add(con);
+        }
+        if(!newcon.isempty()){
+            insert newcon;
+        }
+        
+    }
+
+}
+forcontact.contactnew();
