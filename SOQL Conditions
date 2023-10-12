@@ -1,0 +1,74 @@
+/*
+ * DESC: This class for the by where and LIMIT,ORDERBY,GROUP BY,OFFSET,ALLROWS
+ * Author:Tharun Panguluru
+ * created date: 12/10/2023
+*/
+public class thiscalssforwheresamples {
+    /*
+     * DESC:This method for to fetch all lead and arrange in desc order absed on annualrevenue
+     * Author: Tharun Panguluru
+     * created date:12/10/2023
+     */
+    public static void newleads(){
+        list<Lead> newld =[SELECT Name, AnnualRevenue FROM Lead ORDER BY AnnualRevenue DESC];
+        if(newld!=null){
+            for(Lead ld:newld){
+                system.debug(ld.AnnualRevenue);
+            }
+        }
+    }
+        /*
+     * DESC:This method for to fetch Top 5 highest Annual Revenue Accounts in objects
+     * Author: Tharun Panguluru
+     * created date:12/10/2023
+     */
+    public static void highestannual(){
+        list<Account> acc4 =[SELECT Name, AnnualRevenue FROM Account WHERE AnnualRevenue>1000000 ORDER BY AnnualRevenue DESC LIMIT 5];
+        if(acc4!=null){
+            for(Account newacc:acc4){
+                system.debug(newacc.AnnualRevenue);
+            }
+        }
+    }
+            /*
+     * DESC:This method for to skip first 10 records fo lead order by company
+     * Author: Tharun Panguluru
+     * created date:12/10/2023
+     */
+    public static void tooffestmethod(){
+        list<Lead> dl = [SELECT Name,Status, Company, Industry FROM Lead ORDER BY Company LIMIT 20 OFFSET 10];
+        if(dl!=null){
+            for(lead nedl:dl){
+                system.debug(nedl.Company);
+            }
+        }
+        
+    }
+     /*
+     * DESC:This method for to fetch Top 5 highest Annual Revenue Accounts in objects
+     * Author: Tharun Panguluru
+     * created date:12/10/2023
+     */
+    public static void deletedpositionmethods(){
+        list<Position__c> newpos =[SELECT Name,Location__c,Status__c FROM Position__c ALL ROWS];
+        if(newpos!=null){
+            for(Position__c pos:newpos){
+                system.debug(pos.Name);
+            }
+        }
+    }
+         /*
+     * DESC:This method for to fetch Top 5 highest Annual Revenue Accounts in objects
+     * Author: Tharun Panguluru
+     * created date:12/10/2023
+     */
+    public static void toskipfiveoppo(){
+        list<Opportunity> oppo1 =[SELECT Name, StageName, Type FROM Opportunity ORDER BY NAME LIMIT 50 OFFSET 5 ];
+        if(oppo1!=null){
+            for(Opportunity opp1:oppo1){
+                system.debug(opp1.Name);
+            }
+        }
+    }
+
+}
