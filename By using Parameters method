@@ -1,0 +1,112 @@
+1. Create an apex class, to insert a New Hiring Manager Record inside the Object based on thedetails specified at runtime.
+Ans)/* Desc: This class is for hiring manager record with Parameterized
+ * Author:Tharun Panguluru
+ * Created date: 07/10/2023
+ */
+public class hrrecord {
+    /* Desc: This class is for hiring manager record with Parameterized
+    * Author:Tharun Panguluru
+    * Created date: 07/10/2023
+    */
+    public static void hrmethod(string hrname, string hrboth){
+        Hiring_Manager_Record__c hrm = new Hiring_Manager_Record__c();
+        hrm.Name=hrname;
+        hrm.Name__c=hrboth;
+        insert hrm;
+        
+    }
+
+}
+Ouput:
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Create an apex class, to insert a New Position Record inside the Object based on the details specified at runtime.
+Ans)/* @ Desc:This class for the for position object creation by passing the parameters
+ * @Author: Tharun Panguluru
+ * @created date: 07/10/2023
+ */
+public class forposition {
+    /* @Desc:Creating new position recrod by passing parameters
+     * @Author: Tharun Panguluru
+     * @created date: 07/10/2023
+     */
+    public static void newpos(string posname, string types, string sts, boolean tx, boolean fx){
+        Position__c pos = new Position__c();
+        pos.Name =posname;
+        pos.Type__c=types;
+        pos.Status__c=sts;
+        pos.APEX__c=tx;
+        pos.Lightning__c=fx;
+        insert pos;
+    }
+    
+
+}
+
+Output:
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Create an apex class, to insert a New Student Record inside the Object based on the details specified at runtime.
+Ans) /* Desc: This class is for the student details
+ * Author: Tharun Panguluru
+ * Created date: 07/10/2023
+ */
+
+public class Studentdetalis {
+    /* Desc: This class is for the student details
+     * Author: Tharun Panguluru
+     * Created date: 07/10/2023
+     */
+
+    public static void detailsofstudents(string stdname, string stdbranch, 
+                                         string stdemail, string stdrollno, 
+                                         string stdsubjects, string stdphone){
+        Student__c  std = new Student__c();
+        std.Name=stdname;
+        std.Student_branch__c=stdbranch;
+        std.Student_Email__c=stdemail;
+        std.Student_rollno__c=stdrollno;
+        std.Student_subjects_selected__c=stdsubjects;
+        std.Phone__c=stdphone;
+        insert std;
+    }
+
+}
+Output:
+---------------------------------------------------------------------------------------------------------------
+
+4. Create an apex class, to insert a 3 new Account Record inside the Object based on the details specified at runtime.
+Ans)/*
+ * Desc: This class for the newaccounts
+ * author:Tharun Panguluru
+ * createdate:06/10/2023
+ */
+
+
+public class new3account {
+    
+    /* desc: This account record creation
+     * author: Tharun Panguluru
+     * creatdate:06/10/2023
+     */
+    public static void foraccount(string fname, string rat, string num, string stage, double annu){
+        list <Account> acc1 = new list<Account>();
+        
+        for (integer i=1; i<=3; i++){
+                    Account acc3 = new Account ();
+                    acc3.name = fname+i;
+                    acc3.rating=rat;
+                    acc3.Accountnumber=num+i;
+                    acc3.Type=stage;
+                    acc3.Annualrevenue=annu+i;
+                    acc1.add(acc3);
+
+        }
+        if(!acc1.isempty()){
+            insert acc1;
+        }
+
+        
+    }
+
+}
