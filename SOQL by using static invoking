@@ -1,0 +1,109 @@
+1. Write an apex Program, to fetch all the Lead Records from the Object and represent on the debug log
+File.
+Ans) /* desc: This class is to fetch all the lead recrods by using static method.
+ * Author: Tharun Panguluru
+ * created date: 12/10/2023
+ */
+public class thisforleadsrecords {
+    /* desc: This method for to fetch the lead records.
+    * Author: Tharun Panguluru.
+    * created date: 12/10/2023.
+    */
+    public static void samplestaticmethod(){
+        list<Lead> newlead =[SELECT Id, Name, Status, Industry FROM Lead ];
+        if(newlead!=null){
+            for (Lead led:newlead){
+                system.debug('All lead recrods'+led.Name);
+            }
+        }
+        
+    }
+
+}
+
+Output: 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+2. Write an apex Program, to fetch all the Hiring Manager Records from the Object and represent on the debug log file.
+Ans)/* desc: This class is to fetch all the lead recrods by using static method.
+ * Author: Tharun Panguluru
+ * created date: 12/10/2023
+ */
+public class thisforhrrecords {
+    /* DESC This methode for to fetch the all hiring manager recrods
+     * Author: Tharun Panguluru
+     * created date:12/10/2023
+     */
+public static void hrmrecrodsmethod(){
+        list<Hiring_Manager_Record__c> newhrm =[SELECT Id, Name FROM Hiring_Manager_Record__c];
+        if(newhrm!=null){
+            for(Hiring_Manager_Record__c hr:newhrm){
+                system.debug('All Hiring_Manager_Record__c recrods'+hr);
+            }
+        }
+        
+    }
+
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+3. Write an apex Program, to fetch all the User Records from the Object and represent on the debug log file.
+Ans) /* desc: This class is to fetch all the user recrods by using static method.
+ * Author: Tharun Panguluru
+ * created date: 12/10/2023
+ */
+public class thisforuserrecords {
+    /*
+     * DESC: This method for to fetch all user records
+     * Author: Tharun Panguluru
+     * createdate:12/10/2023
+     */
+    public static void usermethodrecords(){
+        list<User> newuser=[SELECT Id, Name, FirstName, LastName, Username, CompanyName, IsActive FROM USER ];
+        if(newuser!=null){
+            for(User newu:newuser){
+                system.debug('All user account records:'+newu.Name);
+                system.debug('This user is active or not:'+newu.IsActive);
+            }
+        }
+    }
+
+}
+
+
+
+
+Output:
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+• Write an apex Program, to fetch all the Contact Records from the Object and represent on the debug
+log file.
+Ans) /* desc: This class is to fetch all the contacts recrods by using static method.
+ * Author: Tharun Panguluru
+ * created date: 12/10/2023
+ */
+public class thisforcontactsrecords {
+    /*
+     * DESC:This method for the contact records
+     * Author: Tharun Panguluru
+     * Createdate:12/10/2023
+     */
+    public static void contactmethoderecrods(){
+        
+        list<Contact> newcon =[SELECT Id, FirstName, LastName, Account.Name FROM Contact];
+        if(newcon!=null){
+            for(Contact con1:newcon){
+                system.debug('All contact records:'+con1);
+            }
+        }
+        
+    }
+
+}
