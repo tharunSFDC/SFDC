@@ -1,0 +1,20 @@
+// Child to Parent
+Child--Contact
+Parent--Account
+ans)[SELECT Id, Name, FirstName, LastName, Account.Name, Account.Type, Account.Phone FROM Contact];
+
+------------------------------------------------------------------------------------------
+//Parent to child
+
+parent--Account
+child--Contacts
+
+as)SELECT Id, Name, Type, AccountNumber,(SELECT LastName,FirstName FROM Contacts) FROM Account
+
+
+//for custom objects
+child to parent
+child--positions
+parent-hiring manager
+
+ans) SELECT Id, Name, Hiring_Manager_Record__r.Name  FROM Position__c
