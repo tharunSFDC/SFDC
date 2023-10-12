@@ -1,0 +1,62 @@
+/*
+ * DESC: This class by using the runtime 
+ * Author: Tharun Panguluru
+ * created date: 12/10/2023 
+ */
+public class thisclassforruntime {
+    /*
+     * DESC: This method for hiring manager records based on the location
+     * Author: Tharun Panguluru
+     * created date: 12/10/2023 
+     */
+    public static void hiringmanagerlocation(string tharun){
+        list<Hiring_Manager_Record__c> hrm = [SELECT Name, Location__c FROM Hiring_Manager_Record__c WHERE Location__c =: tharun ];
+        if(hrm!=null){
+            for(Hiring_Manager_Record__c hr:hrm){
+                system.debug(hr);
+                
+            }
+        }
+    }
+        /*
+     * DESC: This method for Opportunity stage name and close date
+     * Author: Tharun Panguluru
+     * created date: 12/10/2023 
+     */
+    public static void newoppmethod(string poorna, date lokesh){
+        list<Opportunity> newpos1 =[SELECT Name, CloseDate, StageName FROM 	Opportunity WHERE StageName =: poorna AND CloseDate=:lokesh];
+        if(newpos1!=null){
+            for(Opportunity pos:newpos1){
+                system.debug(pos.CloseDate);
+                system.debug(pos.StageName);
+            }
+        }
+    }
+            /*
+     * DESC: This method Campaign based type and status
+     * Author: Tharun Panguluru
+     * created date: 12/10/2023 
+     */
+    public static void newcampaignmethod(string chandra, string suresh){
+        list<Campaign> newcm =[SELECT Type,Name, Status FROM Campaign WHERE Type=:chandra AND Status=:suresh ];
+        if(newcm!=null){
+            for(Campaign cm:newcm){
+                system.debug(cm.Status);
+                system.debug(cm.Type);
+            }
+        }
+    }
+                /*
+     * DESC: This method Campaign based type and status
+     * Author: Tharun Panguluru
+     * created date: 12/10/2023 
+     */
+    public static void groupformethod(string kumar){
+        list<Group> newgp=[SELECT Id, Type FROM Group WHERE Type=:kumar];
+        if(newgp!=null){
+            for(Group gp:newgp){
+                system.debug(gp.Type);
+            }
+        }
+    }
+}
