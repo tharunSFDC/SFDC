@@ -72,3 +72,71 @@ public class thiscalssforwheresamples {
     }
 
 }
+
+/*
+ * DESC: This class is for the WHERE filter
+ * Author: Tharun Panguluru
+ * created date: 12/10/2023
+*/
+____________________________________________________________________________________________________________________________________________
+------------------------------------------------------------------------------------------------------------------------------------------
+_______________________________________________________________________________________________________________________________________________
+/*
+ * DESC: This class is for the WHERE filter
+ * Author: Tharun Panguluru
+ * created date: 12/10/2023
+*/
+public class methodforwhereclass {
+    /*
+     * DESC: This methode for the cases object whose priority is high from the object
+     * Author: Tharun Panguluru
+     * created date: 12/10/2023
+     */
+    public static void newcasesmethod(){
+        list<Case> ca1 =[SELECT Id, Priority, Status, Account.Name  FROM Case WHERE Priority =:'High'];
+        if(ca1!=null){
+            for(Case ca:ca1){
+                system.debug('All case records with priority high:'+ca);
+            }
+        }
+    }
+        /*
+     * DESC: This methode for the User object whose status is Active
+     * Author: Tharun Panguluru
+     * created date: 12/10/2023
+     */
+    public static void newuseractive(){
+        list<User> ua1=[SELECT Id, Name, FirstName, LastName, isActive FROM User WHERE isActive =:true];
+        if(ua1!=null){
+            for(User ua2:ua1){
+                system.debug('All active users inside org'+ua2);
+            }
+        }
+    }
+    /*
+     * DESC:This for fetch the all lead recrods whose annualrevenue is more the 100000 and indusrty is finance
+     * Author: Tharun Panguluru
+     * created date: 12/10/2023 
+     */
+    public static void newldmethod(){
+        list<Lead> ld =[SELECT Id, Name, AnnualRevenue, Email FROM Lead WHERE AnnualRevenue>100000 AND Industry='Finance' AND Email!=null ];
+        if(ld!=null){
+            for(Lead ld1:ld){
+                system.debug(ld1);
+            }
+        }
+    }
+        /*
+     * DESC:This for fetch the all position records whose status is in progress and maximum more than 100000
+     * Author: Tharun Panguluru
+     * created date: 12/10/2023 
+     */
+    public static void newposrecord(){
+        list<Position__c> pos1 =[SELECT Name, Status__c FROM Position__c WHERE Status__c='In progress' AND Maximum_Budget__c>=100000 ];
+        if(pos1!=null){
+            for(Position__c pos2:pos1){
+                system.debug(pos2);
+            }
+        }
+    }
+}
