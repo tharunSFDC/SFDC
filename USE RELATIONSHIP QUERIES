@@ -18,3 +18,8 @@ child--positions
 parent-hiring manager
 
 ans) SELECT Id, Name, Hiring_Manager_Record__r.Name  FROM Position__c
+
+// child--Candidate
+//Parent-- Positions
+
+ans) SELECT Name, (SELECT Name, City__c, Country__c,Email__c FROM Candidates__r) FROM Position__c
