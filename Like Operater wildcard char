@@ -1,0 +1,43 @@
+ /*
+  * DESC: This class for like operator
+  * AUthor: Tharun Panguluru
+  * created date: 12/10/2023
+  */
+
+public class Bylikeclass {
+  /*
+  * DESC: This method for like operator
+  * AUthor: Tharun Panguluru
+  * created date: 12/10/2023
+  */
+    public static void forlikesopreater(string tharun){
+        list<Account> acc1 =[SELECT Name, Phone, AccountNumber FROM Account WHERE Name like:'%'+tharun+'%'];
+        for(Account acc2:acc1){
+            system.debug(acc2.Name);
+        }
+    }
+    
+    public static void byusinghave(){
+        list<string> checkingrating = new list<String>{'Warm','Hot','Cold'};
+        list<Account> newac = [SELECT Name, Rating FROM Account];
+        if(newac!=null){
+            for(Account ac1:newac){
+                system.debug(ac1.Name);
+                system.debug(ac1.Rating);
+            }
+        }
+            
+    }
+    public static void forgrouprecrods(string liop){
+        list<Group> newgp =[SELECT Type FROM GROUP WHERE Type like:'%'+liop+'%'];
+        if(newgp!=null){
+            for(Group gp:newgp){
+                system.debug(gp);
+            }
+        }
+        
+        
+    }
+    
+
+}
