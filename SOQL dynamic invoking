@@ -1,0 +1,16 @@
+/*
+ * DESC: This class for invoking the soql by using the dynamic method
+ * Author: Tharun Panguluru
+ * created date: 12/10/2023
+*/
+
+public class dtnamcimethods {
+    public static void methodforacounts(){
+        string tharun ='SELECT Id, Name FROM Account';
+        list<Account> acc1 =Database.query(tharun);
+        for(Account acc2:acc1){
+            system.debug(acc2.Name);
+        }
+    }
+
+}
