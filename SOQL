@@ -1,0 +1,36 @@
+1. Write an SOQL Query , to fetch all the Case Records from the Object (Fields : Status,caseNumber, Priority, type, reason, origin, subject)
+Ans)SELECT Id, Status, CaseNumber,Priority, Type,Reason,Origin,Subject FROM Case
+Output:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Write an SOQL Query , to fetch all the User Records from the Object (Fields : Id, firstName,lastName, email, title, department, division, username, isactive)
+Ans)SELECT Id,FirstName, LastName, email, Title, Department, Division, UserName, IsActive FROM User
+
+Output:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Write an SOQL Query , to fetch all the Email templates Records from the Object (Fields : Id, name, description, subject, body, templatetype)
+Ans) SELECT Id, Name, Description, Subject, Body, TemplateType FROM EmailTemplate
+Output:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4. Write an SOQL Query , to fetch all the Hiring Manager Records from the Object (Fields: Id, Name,Contact_Number__c, Email_Address__c , Location__c)
+Ans) SELECT Id, 	Name__c, Name, CreatedById, OwnerId FROM Hiring_Manager_Record__c
+Output:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Write an SOQL Query , to fetch all the Position Records from theObject(FieldsId,Location__c,No_of_Vacancies__c, Open_Date__c, Milestone_Date__c, HR_EmailID__c, Hiring_Manager__c)
+Ans) SELECT Id, Location__c, Open_Date__c,	Close_date__c, Hiring_Manager_Record__c, Functional_Area__c FROM Position__c
+Output:
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. Write an SOQL Query , to fetch all Public Group and Queue Records from the Object
+Ans) SELECT FIELDS(ALL) FROM Group LIMIT 10
+SELECT Id, QueueId, SobjectType, CreatedById, SystemModstamp FROM QueueSobject
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Output:
+
+7. Write an SOQL Query , to fetch all Profile Records from the Object
+Ans)SELECT Id, Name, UserLicenseId, UserType, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, SystemModstamp, Description, LastViewedDate, LastReferencedDate FROM Profile
