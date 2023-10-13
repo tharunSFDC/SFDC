@@ -1,0 +1,82 @@
+/*
+ * DESC; This class for the delete,update,undelete,upsert,merge recrods
+ * Author: Tharun Panguluru
+ * Created date:13/10/2023
+*/
+
+public class fordeleteupdateundeleteupsertmergeclass {
+       /*
+       * DESC: This method for the to delete single are multiple records inside the object
+       * Author: Tharun Panguluru
+       * Created date:13/10/2023
+       */
+    public static void fordeleterecrods(string tharun){
+        DELETE [SELECT Id, Name, LastName, FirstName FROM Contact WHERE LastName like:tharun+'%'];
+        system.debug(limits.getDmlRows());
+        system.debug(limits.getDmlStatements());
+    }
+           /*
+       * DESC; This method for delete the opporunity records based on the runtime
+       * Author: Tharun Panguluru
+       * Created date:13/10/2023
+       */
+    public static void foropporecordsdelete(string oppodl){
+        DELETE[SELECT Id,Name,StageName,Amount FROM Opportunity WHERE Name like:oppodl+'%'];
+        system.debug(limits.getDmlRows());
+        system.debug(limits.getLimitDmlStatements());
+    }
+    
+       /*
+       * DESC; This method for the to undelete the records for recycle bin to object
+       * Author: Tharun Panguluru
+       * Created date:13/10/2023
+       */
+    public static void forundeleterecrods(string poorna){
+        UNDELETE [SELECT Id,Name,LastName,FirstName FROM Contact WHERE LastName like:poorna+'%' AND isDeleted=true ALL ROWS];
+        system.debug(limits.getDmlRows());
+        system.debug(limits.getLimitDmlRows());
+    }
+           /*
+       * DESC; This method for the to undelete the records for recycle bin to object
+       * Author: Tharun Panguluru
+       * Created date:13/10/2023
+       */
+    public static void toupsertrecords(string stvalue){
+        list<Opportunity> newsave = new list<Opportunity>();
+        list<Opportunity> newoppo=[SELECT Id, Name FROM Opportunity WHERE Amount>500000];
+        if(newoppo!=null){
+            for(Opportunity op:newoppo){
+                op.StageName=stvalue;
+                newsave.add(op);
+            }
+            Opportunity newoppo1= new Opportunity();
+            newoppo1.Name='forinitaldesc';
+            newoppo1.StageName='Initail Discussion';
+            newoppo1.CloseDate=system.today();
+            newoppo1.LeadSource='Web';
+            newsave.add(newoppo1);            
+        }
+        upsert newsave;
+        system.debug(limits.getDmlRows());
+        
+    }
+               /*
+       * DESC; This method for the to merge the Account records
+       * Author: Tharun Panguluru
+       * Created date:13/10/2023
+       */
+    public static void formergerecords(){
+        
+        Account tagregetacc =[SELECT Id, Name FROM Account WHERE Name='account and oppo' LIMIT 1];
+        Account source=[SELECT Id, Name,AccountNumber,Type,Industry,Rating FROM Account WhERE Name='foraccountsample' LIMIT 1];
+        tagregetacc.AccountNumber=source.AccountNumber;
+        tagregetacc.Type=source.Type;
+        tagregetacc.Industry=source.Industry;
+        tagregetacc.Rating=source.Rating;
+        if(tagregetacc!=null && source!=null){
+            MERGE tagregetacc source;
+        }
+    }
+    
+
+}
