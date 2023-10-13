@@ -1,0 +1,119 @@
+/*
+ * DESC: This class to create the Contacts and Accounts,Opportunitys,Cases and Hiring manager,position,candidates
+ * Author: Tharun Panguluru
+ * created date: 13/10/2023 
+*/
+
+public class tocreatecontacts {
+    /*
+     * DESC: This method for the Contact records
+     * Author: Tharun Panguluru
+    * created date: 13/10/2023 
+    */
+    public static void forcontactsobjectscreation(){
+        list<Contact> newcon1 = new list<Contact>();
+        
+        for(integer counter=1; counter<=50; counter++){
+            
+            Contact con1 = new Contact();
+            con1.LastName = 'Thesecontactsample';
+            con1.LastName='code'+counter;
+            con1.MobilePhone='5454'+counter;
+            con1.Email='sameple'+counter+'@gmail.com';
+            newcon1.add(con1);
+        }
+        if(!newcon1.isempty()){
+            insert newcon1;
+        }
+        
+        
+    }
+        /*
+     * DESC: This method for the Accounts and related Opportunitys and cases records
+     * Author: Tharun Panguluru
+    * created date: 13/10/2023 
+    */
+    public static void tocreateaccounts(){
+        list<Account> newacc1 = new list<Account>();
+            Account acc1 = new Account();
+            acc1.Name='foraccountsample';
+            acc1.AccountNumber='46545a';
+            acc1.Type='Propect';
+            acc1.Industry='Apparel';
+            acc1.Rating='Hot';
+            newacc1.add(acc1);
+            insert newacc1;
+        
+        list<Opportunity> newoppo= new list<Opportunity>();
+        list<Case> newca = new list<Case>();
+        
+        for(integer n=1; n<=20; n++){
+            Opportunity oppo = new Opportunity();
+            oppo.AccountId=acc1.Id;
+            oppo.Name='opposample'+n;
+            oppo.StageName='Qualification';
+            oppo.CloseDate=system.today()+7;
+            oppo.LeadSource='Web';
+            oppo.Type='New Customer';
+            newoppo.add(oppo);
+            
+            Case ca = new Case();
+            ca.Status='New';
+            ca.AccountId=acc1.Id;
+            ca.Reason='Breakdown';
+            ca.Type='Other';
+            newca.add(ca);
+        }
+        if(!newoppo.isempty()){
+            insert newoppo;
+            insert newca;
+ 
+        }
+
+    }
+    /*
+     * DESC: This method for the hiring manager and related postion records and candidates
+     * Author: Tharun Panguluru
+    * created date: 13/10/2023 
+    */
+    public static void forhrmanager(){
+        Hiring_Manager_Record__c hr = new Hiring_Manager_Record__c();
+        hr.Name ='forsampletest';
+        hr.Name__c='forhrsample';  
+        insert hr;
+        
+        if(hr!=null){
+            list<Position__c> newpos = new list<Position__c>();
+            list<Candidate__c> newcad = new list<Candidate__c>();
+            for( integer p=1 ;p<=5; p++){
+                Position__c pos = new Position__c();
+                pos.Name ='Sampleposition'+p;
+                pos.Hiring_Manager_Record__c=hr.Id;
+                pos.Type__c='• Part-Time';
+                pos.APEX__c=true;
+                pos.JavaScript__c=true;
+                pos.Travel_Required__c=false;
+                newpos.add(pos);
+                
+                    Candidate__c cand = new Candidate__c();
+                    cand.First_Name__c='samplecandidate';
+                    cand.City__c='hyderabad';
+                    cand.Country__c='India';
+                    cand.Email__c='sample@gamil.com';
+                    cand.Mobile__c='55454';
+                    cand.Position__c=pos.Id;
+                    newcad.add(cand);
+            }
+            if(!newpos.isempty()){
+                insert newpos;
+                insert newcad;
+            }
+
+
+        }
+ 
+    }
+    
+    
+
+}
