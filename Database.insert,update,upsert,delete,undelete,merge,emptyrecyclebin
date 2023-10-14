@@ -1,0 +1,175 @@
+/*
+ * DESC: This class for the Database.insert,delete,undelete,upsert,update
+ * Author: Tharun Panguluru
+ * created date: 14/10/2023
+*/
+
+public class todeleteoperationsusingsdatabaseclass {
+       /*
+       * DESC: This Method for the Database.delete method
+       * Author: Tharun Panguluru
+       * created date: 14/10/2023
+       */
+
+    public static void byusingdatabasecalsses(string forhrdel){
+        List<Hiring_Manager_Record__c> newhrem = [SELECT Id,Name FROM Hiring_Manager_Record__c WHERE Name like:forhrdel+'%'];
+        if(newhrem.size()>0){
+           list<Database.DeleteResult> thisfordelete = Database.delete(newhrem,false);
+            for(Database.DeleteResult dl:thisfordelete){
+                if(dl.isSuccess()){
+                    system.debug('All deleted recrods id'+dl.getId());
+                }else{
+                    for(Database.Error error: dl.getErrors())
+                    {
+                        system.debug('Records are not deleted for the object check the code');
+                    }
+                }
+
+            }
+            
+
+            
+        }
+    }
+           /*
+       * DESC: This Method for the Database.Undelete method
+       * Author: Tharun Panguluru
+       * created date: 14/10/2023
+       */
+
+    
+    public static void forundeleteforrecybin(string forundo){
+        list<Hiring_Manager_Record__c> foeundo = [SELECT id,Name FROM Hiring_Manager_Record__c WHERE  isDeleted=true AND Name like:forundo+'%' ALL ROWS];
+        if(foeundo!=null){
+            list<Database.UndeleteResult> forresult = Database.undelete(foeundo,false);
+            for(Database.UndeleteResult rl:forresult){
+                if(rl.isSuccess()){
+                    system.debug('All undeleted records'+rl.getId());
+                }else
+                {
+                    for(Database.Error errors: rl.getErrors())
+                    {
+                        system.debug('The recrods are not recovered please check the code');
+                    }
+                }
+            }
+        }
+    }
+        /*
+       * DESC: This Method for the Database.upsert method
+       * Author: Tharun Panguluru
+       * created date: 14/10/2023
+       */
+    public static void forupsertmethod(){
+        list<Account> foracc = [SELECT Id, Name FROM Account WHERE Type='Propect'];
+        list<Account> newacc= new list<Account>();
+        if(foracc!=null){
+            for(Account ac:foracc){
+                ac.Phone='47852478';
+                ac.Industry='Banking';
+                ac.Rating='Hot';
+                newacc.add(ac);
+            }
+        }
+        
+        
+        Account acc1 = new Account();
+        acc1.Name='fordatabasesample';
+        acc1.Rating='Cold';
+        acc1.AccountNumber='45322';
+        acc1.Industry='Banking';
+        acc1.AnnualRevenue=5454254;
+        acc1.Phone='1525276';
+        newacc.add(acc1);
+        
+        if(newacc!=null){
+            list<Database.UpsertResult> froup = Database.upsert(newacc);
+            for(Database.UpsertResult rl:froup){
+                if(rl.isSuccess()){
+                    system.debug('this for updated and created records inside the object'+rl.getId());
+                }else
+                {
+                    for(Database.Error forerror:rl.getErrors()){
+                        system.debug('this for both update and create opertion is not prefromed');
+                    }
+                }
+            }
+        }     
+    }
+    /*
+     * DESC: This method for the database.update method
+     * Author: Tharun panguluru
+     * created date: 14/10/2023
+     */
+    public static void foupdatedemthod(){
+        list<Account> newupdate =[SELECT Id, Name,Type FROM Account WHERE Type='Propect'];
+        list<Account> updateacc =new list <Account>();
+        if(newupdate!=null){
+            for(Account ac:newupdate){
+                ac.Industry='Banking';
+                ac.Name='Banking accounts';
+                ac.Rating='Hot';
+                updateacc.add(ac);
+            }
+        }
+        if(updateacc!=null){
+            list<Database.SaveResult> forupdateacc= Database.update(updateacc,false);
+            for (Database.SaveResult sv: forupdateacc)
+            {
+                if(sv.isSuccess()){
+                    system.debug('all updated record ids'+sv.getId());
+                }else
+                {
+                    for(Database.Error er:sv.getErrors()){
+                        system.debug('This recrods are not updated'+er.getFields());
+                    }
+              
+                
+            }  
+        }
+    }
+  }
+}
+
+
+
+___________________________________________________________________________________________________________________________________________
+--------------------------------------------------------------------------------------------------------------------------------------------------
+_______________________________________________________________________________________________________________________________________________
+/*
+ * DESC: This class is for the database.merge recrods inside the object
+ * Author: Tharun Panguluru
+ * created date: 14/10/2023
+*/
+
+public class fordatabaseclass {
+    /*
+     * DESC: This method for the To merge the account records inside the object
+     * Authore: Tharun Panguluru
+     * created date: 14/10/2023
+     */
+    public static void formergefields(){
+        Account target=[SELECT Id, Name FROM Account WHERE Name='Burlington Textiles Corp of America' LIMIT 1];
+        Account source=[SELECT Id, Name FROM Account WHERE Name='Banking accounts'];
+        if(target!=null && source!=null){
+           Database.merge(target, source);
+        }else
+        {
+            system.debug('This merge is failed');
+        }
+    }
+        /*
+     * DESC: This method for the empty recyclebin the Opportunity records inside the object
+     * Authore: Tharun Panguluru
+     * created date: 14/10/2023
+     */
+    public static void foremptycyclebin(string toempty){
+        
+        list<Opportunity> newoppo = [SELECT Id, Name, isDeleted FROM Opportunity WHERE isDeleted=true AND Name like:toempty+'%' ALL ROWS];
+        if(newoppo!=null){
+            Database.emptyRecycleBin(newoppo);
+        }
+    }
+    
+
+}
