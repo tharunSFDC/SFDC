@@ -37,7 +37,7 @@ public class fordeleteupdateundeleteupsertmergeclass {
         system.debug(limits.getLimitDmlRows());
     }
            /*
-       * DESC; This method for the to undelete the records for recycle bin to object
+       * DESC; This method for the upsert opportunity
        * Author: Tharun Panguluru
        * Created date:13/10/2023
        */
