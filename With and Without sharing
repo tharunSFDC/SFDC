@@ -1,0 +1,10 @@
+// this classes for the with and without sharing
+public with sharing class withandwithoutsharing {
+    public integer lsaccounts()
+    {
+        list <Account> acclist = [SELECT ID, Name, Rating,Phone FROM Account order by Name];
+        system.debug(acclist.size());
+        return acclist.size();
+    }
+
+}
