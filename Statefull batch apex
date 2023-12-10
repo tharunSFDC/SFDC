@@ -1,0 +1,25 @@
+// These is Batch apex by using the stateful batch
+Global class statfullbatchapex implements Database.Batchable<sObject>,Database.stateful{
+    // declaring the varabile 
+    Global integer inc =0;
+    // Start method()
+    Global Database.QueryLocator start(Database.BatchableContext newcm){
+        string q = 'SELECT id, Name, Rating,Type FROM Account';
+        return Database.getQueryLocator(q);    
+     }
+    //Execute method()
+    Global void execute(Database.BatchableContext newcm, list<sObject> acc1){
+        list<Account> newacc = (list<Account>)acc1;
+        for(Account acc2:newacc)
+        {
+            if(acc2.Type=='Customer - Direct')
+            {
+                inc++;
+            }
+        }
+    }
+    // Finish method()
+    Global void finish(Database.BatchableContext newcm){
+        system.debug('count'+inc);
+    }
+}
