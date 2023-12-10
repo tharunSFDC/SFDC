@@ -1,0 +1,67 @@
+ Apex Triggers
+
+Trigger are custom apex code which will execute the business logic automatically based certain event
+Implement Complex logic, complex validation
+Triggers can be fired on both ‘before and after ‘ operation on the specified object.
+Trigger events
+
+Before insert: The event fire the trigger before inserting new records inside the object.
+Requirement
+Assign the values to the field(shipping address==billing address)
+Custom validations
+Duplication process
+Object level permissions.
+Before update
+We can fire a trigger on before updating an existing record in the object.
+Custom validations.
+Before delete
+This event will fire trigger before deleting any record from the object.
+Object level permissions
+Lookup field value
+After insert
+  This event will fire the trigger on ‘after inserting a record inside the object
+Send email alert
+Share records
+Assign the records to the owner.
+After update
+This event will ifre the trigger after updating the existing records inside the object
+Once oppo is update we can send email notifications
+Rollu summary fields
+Custom assigment
+After Delete
+This event will fire the trigger ‘after deleting an existing record in object.
+Child records
+After Undelete
+This event will fire the trigger re-strong the deleted records.
+
+Trigger—> ApexTrigger object
+
+Context Variables: identify the current status of the trigger, so that we can segrate the code to be executed .
+
+Trigger.isinsert
+Trigger.isupdate
+Trigger.isDelete
+Trigger.isundelete
+Trigger.isBefore
+Trigger.isAfter
+Trigger.old : Contains the list of existing records.
+Trigger.Oldmap
+Trigger.New: which contains the current context records int he form of the list of collection, All newly inserting records will get placed inside the Trigger.new for the validations, this list is only available in insert, update,undelete triggers.
+             
+Trigger.newmap
+Order of execution
+Load the Original record(insert)
+Override the old record values with the new values
+Execute all before trigger
+Run the system & user defined validation rules
+Save the record but it will not commit the record in database
+Execute all after Triggers
+Execute the auto-response rules
+Work flow rules,processs builder, flows
+Roll-up summary field
+Evlauate criteria based sharing rules
+Commit all dml operation
+Post commit (sending and email)
+
+What id: Account, opportunity
+Whoid: Contact, lead
