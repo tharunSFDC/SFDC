@@ -1,0 +1,20 @@
+// The batch apex in order to delete the contacts leadsourcce is web
+
+Global class newbachapexclasses implements Database.Batchable<sObject> {
+    //start method()
+    Global list<Contact> start(Database.BatchableContext newcon){
+        list<Contact> newcon1 = [SELECT id, Name, Leadsource FROM Contact Where Leadsource ='Web'];
+        return newcon1;
+    }
+    //execute method()
+    Global void Execute(Database.BatchableContext newcon, list<Contact> con){
+        if(!con.isempty())
+        {
+            Database.Delete(con,false);
+        }
+    }
+    //finish method()
+    Global void Finish(Database.BatchableContext newcon){}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
