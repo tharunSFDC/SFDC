@@ -1,0 +1,29 @@
+// This trigger is for the Account object
+trigger Accounttriggers on Account (before insert, before update, before delete) {
+    // Trigger Context variables
+    if(Trigger.isbefore && (Trigger.isinsert || Trigger.isupdate)){
+        // To make fileds required Industry,Fax,website
+        for(Account acc:Trigger.New)
+        {
+            if(acc.Industry==null){
+                acc.Industry.AddError('Industry is required please full this field');
+            }
+            else if(acc.Fax==null){
+                acc.Fax.AddError('Fax is required');
+            }
+            else if(acc.website==null){
+                acc.website.AddError('Website is reuired');
+            }
+
+        }
+    }
+    //advoiding the deleltion of the account records.
+    if(Trigger.isbefore && Trigger.isDelete){
+        for(Account ac:Trigger.New){
+            if(ac.Active__c=='Yes'){
+                ac.Active__c.AddError('Active Accounts cant Delete');
+                
+            }
+        }
+    }
+}
