@@ -8,3 +8,26 @@ trigger leadtriggers on Lead (before insert, before update) {
     }
 
 }
+----------------------------------------------
+public class leadhelper {
+    public static void beforeandafter(list<lead> ld){
+        for(Lead newld:ld)
+        {
+            Switch on newld.Industry{
+                When 'Banking'{
+                    newld.AnnualRevenue=7890;
+                }
+                when 'Finance'{
+                    newld.AnnualRevenue=097987; 
+                }
+                when 'Insurance'{
+                    newld.AnnualRevenue=867986;
+                }
+                when 'Education'{
+                    newld.AnnualRevenue=875;
+                }
+            }
+        }
+    }
+
+}
