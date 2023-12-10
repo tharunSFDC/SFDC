@@ -1,0 +1,10 @@
+
+// creating trigger on lead object
+trigger leadtriggers on Lead (before insert, before update) {
+    
+    if(Trigger.isbefore && (Trigger.isinsert || Trigger.isupdate))
+    {
+        leadhelper.beforeandafter(Trigger.New);
+    }
+
+}
