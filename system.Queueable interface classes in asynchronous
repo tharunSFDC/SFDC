@@ -1,0 +1,47 @@
+// This class is the by implementing the Queueable in the asynchronous
+Global class queueableinterfaceasync implements system.Queueable{
+    // We are using executing method in the asynchronous
+    Global void execute(system.QueueableContext qc)
+    {
+        Account ac = new Account();
+        ac.First_Name__c='tharunqueueable1';
+        ac.Last_Name__c='new1';
+        ac.Name='newqueueablecontext1';
+        ac.Rating='Hot';
+        ac.AccountNumber='93864';
+        ac.Industry='Banking';
+        insert ac;
+        
+        if(ac!=null)
+        {
+        system.debug('Accountid'+ac.id);
+        //calling another queueable class by passing the hr record data
+        system.enqueueJob(new Queueablecontactcreation(ac));
+        }
+    }
+}
+
+---------------
+
+// This is second queueable classes and calling in the main classes
+Global class Queueablecontactcreation implements system.queueable {
+    Account ac;
+    // implementing the constructor for this classes in order to refer
+    public Queueablecontactcreation(Account acclist)
+    {
+        ac=acclist;
+    }
+       // execute method to creat the realted contact record to account  
+    Global void execute(system.QueueableContext qc)
+    {
+       Contact conn = new Contact();
+       conn.FirstName='accountcontact';
+       conn.LastName='contact account';
+       conn.AccountId=ac.Id;
+       conn.Email='tharuncse508@gmail.com';
+       conn.Phone='9236';
+       insert conn;
+       
+    }
+
+}
