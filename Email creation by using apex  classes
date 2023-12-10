@@ -1,0 +1,77 @@
+// this class for the new lead creation and email nofications
+public class SendEmailLeadHelper {
+    //create 3 Leads
+    public static void createLead(){
+        List<Lead> leadList= new List<Lead>();
+        for(integer count=1;count<4;count++){
+            Lead ld=new Lead();
+            ld.FirstName='Email Helper -'+count;
+            ld.LastName='LeadEmail -'+count;
+            ld.Email='tharunece035@gmail.com';
+            ld.Rating='Warm';
+            ld.LeadSource='Web';
+            ld.Industry='Banking';
+            ld.Company='Dell';
+            ld.AnnualRevenue=878878789;
+            leadList.add(ld);
+        }
+        
+        if(!leadList.isEmpty()){
+            Database.insert(leadList,false);
+            sendNotification(leadList);
+        }
+    }
+    // method for the email notification
+    public static void sendNotification(List<Lead> leadList){
+        if(!leadList.isEmpty()){
+            List<Messaging.SingleEmailMessage> emailList=new List<Messaging.SingleEmailMessage>();
+
+            for(Lead ldRecord:leadList){
+                 //Prepare Email Notification 
+                Messaging.SingleEmailMessage email=new Messaging.SingleEmailMessage();
+                //toAddress
+                string[] toAddress= new string[]{ldRecord.Email};
+                email.setToAddresses(toAddress);
+                //Reply To Adress
+                email.setReplyTo('support@dsfsdf.com');
+                //Display Name 
+                email.setSenderDisplayName('SWAPNAIT Support Team');
+                //Subject
+                string emailsubject ='Thank you for Interst -'+ldRecord.FirstName;
+                email.setSubject(emailsubject);
+                //Content
+                string emailContent='Dear '+ldRecord.FirstName+ldRecord.LastName+',<br/><br/>'+
+                     				'Thank you for Interest! <br/><br/>'+
+                     	'We are working on your data.My team will contact you soon!! <br/><br/>'+
+                        'Please find your data <br/><br/>'+ 
+                    	'<br/>Lead Person Name : '+ldRecord.FirstName+ldRecord.LastName+
+                     	'<br/>Led AnnualRevenue: '+ldRecord.AnnualRevenue+
+                     	'<br/>Lead Email : '+ldRecord.Email+
+                     	'<br/><br/>Please review the information '+
+                      '<br/><br/>************This is System generated Email *****************<br/><br/><br/>'+
+                         
+                   'Thank you,<br/>'+
+                   'SWAPNA IT<br/>';
+                email.setHtmlBody(emailContent);
+                
+                //Prepare Attachment 
+               Messaging.EmailFileAttachment attach=new Messaging.EmailFileAttachment();
+               attach.setFileName(ldRecord.FirstName+'_'+ldRecord.LastName+'.pdf');
+                attach.setContentType('Application/pdf');
+                attach.body=Blob.toPdf(emailContent);
+                
+                List<Messaging.EmailFileAttachment> attachmentList=new List<Messaging.EmailFileAttachment>();
+                attachmentList.add(attach);
+                email.setFileAttachments(attachmentList);
+                emailList.add(email);
+                
+                
+            }
+            if(!emailList.isEmpty())
+            {
+               Messaging.SendEmailResult[] result= Messaging.sendEmail(emailList);
+            }
+        }
+        
+    }
+}
