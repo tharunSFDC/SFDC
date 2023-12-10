@@ -1,0 +1,48 @@
+//Schedulable class in the asynchronous processes
+
+Global class schedulablenewhere implements system.schedulable {
+    // Execute method()
+    Global void Execute(system.schedulableContext sc){
+        newbatchclass newclass = new newbatchclass();
+        Database.executebatch(newclass);
+    }
+
+}
+
+--------------------------------------------------------------------------------------------------
+// this class for both batch apex and scdulable intefrace without using the setup
+Global class bothschdulablebatchandbatch implements Database.Batchable<sObject>, Schedulable {
+   // start method
+    Global Database.QueryLocator start(Database.BatchableContext bb){
+        string q ='SELECT Id, Name, LeadSource FROM lead Where LeadSource=null limit 10';
+        return Database.getQueryLocator(q);
+    }
+    // execute method
+    Global void execute(Database.BatchableContext bb, list<sObject> newlist){
+        list<lead> newld =(list<lead>)newlist;
+        list<lead>newld1 = new list<lead>();
+        if(!newld.isempty())
+        {
+            for(lead ld:newld)
+            {
+                ld.LeadSource='Phone Inquiry';
+                newld1.add(ld);
+            }
+            Database.insert(newld1,false);
+            
+        }
+    }
+    // finish method()
+    Global void finish(Database.BatchableContext bb){}
+    // execute method for the schedulablecontext
+    Global void execute(SchedulableContext sc){
+        
+        //invokening the batch class
+       
+        Database.executebatch(new bothschdulablebatchandbatch());
+
+    }
+     
+    
+}
+
