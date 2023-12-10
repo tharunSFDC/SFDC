@@ -1,0 +1,35 @@
+// this class is the future method
+
+public class futuremethodsclasshelper {
+    
+    //setup objects
+    public static void todeactiveuser()
+    {
+        User toactive =[SELECT Id, Name,isActive FROM User WHERE Name ='Chatter Expert'];
+        if(toactive.Id!=null)
+        {
+           toactive.IsActive= false;
+        }
+        update toactive;
+        
+        //calling the non-setupmethod
+        nonsetupobjects();
+       
+    }
+    //Non setup object
+    @future()
+    public static void nonsetupobjects(){
+        Lead ld = new lead();
+        ld.FirstName='nonsetupobject';
+        ld.LastName='mainonsetupobject';
+        ld.Company='JP';
+        ld.Industry='Banking';
+        ld.LeadSource='web';
+        ld.Email='tharuncse508@gmail.com';
+        insert ld;
+        system.debug('Record id'+ld.Id);
+            
+    }
+    
+
+}
