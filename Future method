@@ -1,0 +1,17 @@
+// this class is the future method counts account related contact to account objects
+public class AccountProcessor {
+    @future
+    public static void countContacts(list<id> accountid)
+    {
+       list<Account> acc1= [SELECT Id, (SELECT id FROM Contacts) FROM Account WHERE id in:accountid];
+        if(!acc1.isempty())
+        {
+            for(Account acclist:acc1)
+            {
+                acclist.Number_of_Contacts__c=acclist.Contacts.size();
+            }
+            update acc1;
+        }
+    }
+
+}
