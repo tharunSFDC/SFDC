@@ -1,0 +1,46 @@
+// Test class for the future method
+@IsTest
+public class AccountProcessorTest {
+    static testmethod void futuemethodtest()
+    {
+        //load test data
+        list<Account> acc2 = new list <Account>();
+        for(integer i=1;i<=100;i++)
+        {
+            Account accclist = new Account();
+            accclist.Name='test'+i;
+            acc2.add(accclist);
+        }
+        if(!acc2.isempty())
+        {
+            insert acc2;
+        }
+        list<contact> con = new list <Contact>();
+        list<id> newaccids = new list <id>();
+        for(Account acc4:acc2)
+        {
+            Contact newcon = new Contact();
+            newcon.FirstName='test';
+            newcon.LastName='lasttest';
+            newcon.AccountId=acc4.Id;
+            con.add(newcon);
+            newaccids.add(acc4.Id);
+        }
+        insert con;
+        
+        //Do the Test
+        Test.startTest();
+        AccountProcessor.countContacts(newaccids);
+        
+        Test.stopTest();
+        // check the result
+        list<Account> accs = [SELECT id, Number_of_Contacts__c FROM Account];
+        for(Account acc5:accs)
+        {
+            system.assertEquals(1,acc5.Number_of_Contacts__c,'Error at least 1Account');
+        }
+        
+
+    }
+
+}
