@@ -1,0 +1,31 @@
+
+// Trigger on lead object After insert and after update to convert the lead automatcally
+trigger triggerleadconvert on Lead (After insert, After update) {
+    // Trigger context variables
+    if(Trigger.isAfter && Trigger.isupdate)
+    {
+        //query the leadstatus object 
+       leadstatus ld = [SELECT ID,MasterLabel, isConverted FROM leadstatus where isConverted=true];
+        list<Database.LeadConvert> newdb = new list<Database.LeadConvert>();
+        for(lead ldrecord:Trigger.New)
+        {
+            if(ldrecord.Status==ld.MasterLabel && ldrecord.IsConverted==false)
+            {
+                Database.LeadConvert lconvert = new Database.LeadConvert();
+                lconvert.setleadId(ldrecord.Id);
+                lconvert.setSendNotificationEmail(true);
+                lconvert.setDoNotCreateOpportunity(false);
+                lconvert.setConvertedStatus(ld.MasterLabel);
+                newdb.add(lconvert);
+               
+                    
+            }
+        }
+        //checking the list and converting the leads 
+        if(!newdb.isempty())
+        {
+            Database.LeadConvertResult[] result = Database.ConvertLead(newdb,false);
+        }
+    }
+
+}
