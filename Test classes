@@ -1,0 +1,85 @@
+// This test class is for the to test the future method.
+@isTest
+public class futuremethodTest {
+    static testmethod void futuremths()
+    {
+        test.starttest();
+        //invoke the future method
+        futuremethodsclasshelper.todeactiveuser();
+        test.stoptest();
+    }
+
+}
+
+// This test is for the email class test class
+@istest
+public class emailclassesTest {
+    static testmethod void emailcl(){
+        test.starttest();
+        //invoking the email classes in test class
+        SendEmailLeadHelper.createLead();
+        test.stoptest();
+    }
+
+}
+
+
+// this test for the queuable intefaces test classes
+@istest
+public class testclassqueueabletest {
+    static testmethod void newqueueableclass()
+    {
+    test.starttest();
+    //invoking the queueable class to test class
+    system.enqueueJob(new queueableinterfaceasync());
+    test.stoptest();
+
+    }
+
+}
+
+// This test class is for the to test the codecoverge of Batch classes
+@isTest
+public class batchclasstest {
+    static testmethod void testbatch()
+    {
+        test.starttest();
+        //invokeing the batch class
+        newbatchclass br = new newbatchclass();
+        Database.executeBatch(br);
+        test.stoptest();
+   // this test class for the bulk lead test class
+
+// This Test class is for the Bulk lead test classes
+@isTest
+public class BulkLeadConvertTest {
+    static testmethod void TestAutoLead(){
+        //create a Lead Record
+        Lead ldRecord=new Lead();
+        ldRecord.FirstName='Bulk';
+        ldRecord.LastName='Convert';
+        ldRecord.Company='Apex';
+        ldRecord.Phone='345345345';
+        ldRecord.Fax='4354362342';
+        ldRecord.Rating='Hot';
+        ldRecord.Industry='Banking';
+        ldRecord.AnnualRevenue=87878778;
+        ldRecord.Status='Open - Not Contacted';
+        insert ldRecord;
+        
+        ldRecord.Status='Closed - Converted';
+        update ldRecord;
+    }
+    
+
+} }
+
+}
+
+
+
+
+
+
+
+
