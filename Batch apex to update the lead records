@@ -1,0 +1,25 @@
+// This class is the batch apex classes in order update the lead records
+public class LeadProcessor implements Database.Batchable<sObject> {
+    // start method
+    public Database.QueryLocator start(Database.BatchableContext bc){
+         return Database.getQueryLocator([SELECT id ,Name FROM Lead]);
+    }
+    //execute method
+    public void execute(Database.BatchableContext bc, list<lead> ld){
+ 
+        for(Lead newld:ld)
+        {
+            newld.LeadSource='Dreamforce';
+        }
+        update ld;
+        
+    }
+    // finish method
+    public void finish(Database.Batchablecontext bc){
+        system.debug('Done');
+       
+      
+        
+    }
+
+}
