@@ -1,0 +1,27 @@
+// test classes for the batch apex lead records passing to test the batch apex
+@IsTest
+public class LeadProcessorTest {
+    @isTest
+     private static void fortesting()
+    {
+        //load the data
+        list<Lead> ld = new list<Lead>();
+        for(Integer i=0;i<200;i++){
+            ld.add(new Lead(LastName='Concon', Company='Salesforce'));
+        }
+        insert ld;
+
+        
+        //test the data
+        test.startTest();
+        LeadProcessor bld = new LeadProcessor();
+        Id batchid = Database.executeBatch(bld);
+        test.stopTest();
+        
+        //chech the result
+        List<Lead> lds =[SELECT id, Name FROM lead where LeadSource='Dreamforce'];
+        system.assertEquals(200,lds.size());
+        
+    }
+
+}
