@@ -31,3 +31,34 @@ public class leadhelper {
     }
 
 }
+=================================================================================================
+rigger Triggeronleadrecords on Lead (before insert, before update) {
+    if(Trigger.isBefore && (Trigger.isinsert || Trigger.isupdate))
+    {
+        for(Lead newld:Trigger.New)
+        {
+            if(newld.Street==null)
+            {
+                newld.Street.AddError('Street is required');
+            }
+             if(newld.city==null)
+            {
+                newld.City.AddError('The City is required field');
+            }
+             if(newld.State==null)
+            {
+                newld.State.AddError('The State is required field');
+            }
+             if(newld.Country==null)
+            {
+                newld.Country.AddError('The Country is required field');
+            }
+             if(newld.PostalCode==null)
+            {
+                newld.PostalCode.AddError('The postal code is required field');
+            }
+        }
+    }
+
+}
+
