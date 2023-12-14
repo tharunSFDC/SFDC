@@ -1,0 +1,79 @@
+// This class for the Account apex sharing reocrds based on the annula revenue it will share the rcords with users
+
+public class forapexshare {
+    public static void froaccountshare(list <Account> newacc)
+    {
+        if(!newacc.isempty())
+        {
+            list<AccountShare> listnew = new list<AccountShare>();
+            for(Account acc:newacc)
+            {
+                if(acc.User__c!=null)
+                {
+                   AccountShare accshare = new AccountShare();
+                   accshare.UserOrGroupId=acc.User__c;
+                   accshare.RowCause='Manual';
+                   accshare.OpportunityAccessLevel='READ';
+                   accshare.CaseAccessLevel='READ';
+                   accshare.AccountId=acc.Id;
+                    
+                    if(acc.AnnualRevenue>=5000000)
+                    {
+                        accshare.AccountAccessLevel='Edit';
+                    }
+                    else
+                    {
+                        accshare.AccountAccessLevel='READ';
+                    }
+                    listnew.add(accshare);
+                }
+            }
+            if(!listnew.isempty())
+             {
+                insert listnew;
+             }
+        }
+    }
+    public static void forupdate(list<Account> forupdates)
+    {
+        if(!forupdates.isempty())
+        {
+            list<AccountShare> accshares1 = new list<AccountShare>();
+            for(Account acc1:forupdates)
+            {
+                if(acc1.AnnualRevenue!=null)
+                {
+                    AccountShare accshare = new AccountShare();
+                    if(acc1.AnnualRevenue<=4000000)
+                    {
+                        accshare.AccountAccessLevel='READ';
+                        
+                    }else
+                    {
+                        accshare.AccountAccessLevel='Edit';
+                    }
+                    accshares1.add(accshare);
+                }
+                
+            }
+            if(accshares1.isempty())
+            {
+                update accshares1;
+            }
+        }
+    }
+
+}
+=============================================
+// Apex Sharing 
+trigger forapexshares on Account (After insert, After Update) {
+    if(Trigger.isAfter && Trigger.isinsert )
+    {
+        forapexshare.froaccountshare(Trigger.New);
+    }
+    if(Trigger.isAfter && Trigger.isUpdate)
+    {
+        forapexshare.forupdate(Trigger.New);
+    }
+
+}
