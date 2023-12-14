@@ -29,3 +29,35 @@ trigger triggerleadconvert on Lead (After insert, After update) {
     }
 
 }
+
+
+
+// bulk lead conversion another method
+
+trigger forleadconvert on Lead (After Update) {
+    
+    if(Trigger.isAfter && Trigger.isupdate)
+    {
+       // Lead lds =[SELECT ID,Name, Status, Rating FROM Lead WHERE Status='Closed - Converted' AND Rating='Hot'];
+        list<Database.LeadConvert> ldconvert = new list<Database.LeadConvert>();
+        for(Lead ld: Trigger.New)
+        {
+            if(ld.Status=='Closed - Converted' && ld.Rating=='Hot' && ld.IsConverted==false)
+            {
+                Database.LeadConvert lconvert = new Database.LeadConvert();
+                lconvert.setLeadId(ld.Id);
+                lconvert.setSendNotificationEmail(True);
+                lconvert.setDoNOtCreateOpportunity(false);
+                lconvert.setConvertedStatus(ld.Status);
+                
+                ldconvert.add(lconvert);
+ 
+            }
+        }
+        if(!ldconvert.isempty())
+        {
+           Database.LeadconvertResult[] results=Database.convertlead(ldconvert,false);
+        }
+    }
+
+}
