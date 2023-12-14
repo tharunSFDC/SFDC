@@ -1,0 +1,37 @@
+// Trigger class when ever the hr records is created automatically position records is created
+public class hiringmanagerrcordslinktorecr {
+    public static void forpostionmethodrec(list<Hiring_Manager_Record__c> newhm){
+        list<Position__c> newpos = new list<Position__c>();
+        if(!newhm.isempty())
+        {
+            // creating the postion record for the hr record
+            for(Hiring_Manager_Record__c hr:newhm)
+            {
+                Position__c pos = new Position__c();
+                pos.Name='triggerpositionnew';
+                pos.Hiring_Manager_Record__c=hr.id;
+                newpos.add(pos);
+            }
+            
+        }
+        // insert the postion records
+        if(!newpos.isempty())
+        {
+            Database.insert(newpos,false);
+        }
+        
+    }
+
+}
+
+
+========================================================================
+
+// Trigger on the hr records link the postion records
+trigger hiring on Hiring_Manager_Record__c (After insert) {
+    if(Trigger.isAfter && Trigger.isinsert)
+    {
+        hiringmanagerrcordslinktorecr.forpostionmethodrec(Trigger.New);
+    }
+
+}
