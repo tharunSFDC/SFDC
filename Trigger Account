@@ -1,0 +1,62 @@
+// Account Trigger to copy tge shipping address to billing address un account is created
+trigger foraccount on Account (before insert,before update) {
+    
+    if(trigger.isbefore && (trigger.isinsert || trigger.isupdate))
+    {
+        for(Account acc:Trigger.new)
+        {
+            if(acc.BillingCity==null && acc.BillingCountry==null && acc.BillingPostalCode==null && acc.BillingState==null && acc.BillingStreet==null)
+            {
+                acc.BillingCity=acc.ShippingCity;
+                acc.BillingCountry=acc.ShippingCountry;
+                acc.BillingPostalCode=acc.ShippingPostalCode;
+                acc.BillingState=acc.ShippingState;
+                acc.BillingStreet=acc.ShippingStreet;
+            }
+
+        }
+        
+    }
+
+}
+
+// account records is created create the realted records contacts records
+public class accounthandlerandcontactslinks {
+    public static void newAccoountslink(list<Account> newlist)
+    {
+        list<Contact> newcon = new list <Contact>();
+        if(!newlist.isempty())
+        {
+            for(Account acc:newlist)
+            {
+                Contact con = new Contact();
+                con.FirstName=acc.Name;
+                con.AccountId=acc.Id;
+                con.Phone=acc.Phone;
+                con.MailingCity=acc.BillingCity;
+                con.MailingCountry=acc.BillingCountry;
+                con.MailingPostalCode=acc.BillingPostalCode;
+                con.MailingState=acc.BillingState;
+                con.MailingStreet=acc.BillingStreet;
+                newcon.add(con);
+                
+            }
+        }
+        
+        if(!newcon.isempty())
+        {
+            Database.insert(newcon,false);
+        }
+    }
+
+trigger foraccount on Account (After insert) {
+    
+    if(trigger.isafter && trigger.isinsert )
+    {
+accounthandlerandcontactslinks.newAccoountslink(Trigger.New)
+}
+
+
+
+
+}
