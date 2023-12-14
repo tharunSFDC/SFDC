@@ -1,0 +1,55 @@
+// To make the Contact parent account should required by using the Trigger
+
+trigger TriggeronContactrecrods on Contact (before insert, before update) {
+    
+    if(Trigger.isBefore &&(Trigger.isinsert || Trigger.isupdate))
+    {
+        for(Contact con:Trigger.New)
+        {
+            if(con.AccountId==null)
+            {
+                con.AccountId.AddError('The Account is required for the contact records');
+            }
+        }
+    }
+
+}
+
+
+======================================================================
+// Making contact fileds as required by using the trigger and copying the mailling address 
+
+trigger thisforcontact on Contact (before insert,before update) {
+    if(Trigger.isbefore && (Trigger.isinsert || trigger.isUpdate))
+    {
+        for(Contact con:Trigger.new)
+        {
+            if(con.FirstName==null)
+            {
+                con.FirstName.AddError('enter your firstname');
+            }
+            if(con.Email==null)
+            {
+                con.Email.AddError('Enter your email ID');
+            }
+            if(con.Title==null)
+            {
+                con.Title.AddError('Enter your title');
+            }
+            if(con.MobilePhone==null)
+            {
+                con.MobilePhone.AddError('Enter Phone number');
+            }
+            if(con.MailingCity==null && con.MailingCountry==null && con.MailingPostalCode==null && con.MailingState==null && con.MailingStreet==null)
+            {
+                con.MailingCity=con.OtherCity;
+                con.MailingCountry=con.OtherCountry;
+                con.MailingPostalCode=con.OtherPostalCode;
+                con.MailingState=con.OtherState;
+                con.MailingStreet=con.OtherStreet;
+            }
+
+        }
+    }
+
+}
