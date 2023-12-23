@@ -1,0 +1,74 @@
+
+<!--created the lighting page-->
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <!--created the lightning card-->
+    <lightning:card title="Patient Information" footer="End">
+        <!--lightning button group-->
+        <lightning:buttongroup>
+            <lightning:button label="Log a Call" variant="Neutral"/>
+            <lightning:button label="View Medicines" variant="Neutral"/>
+            <lightning:button label="New Note" variant="Neutral"/>
+            <lightning:buttonMenu>
+                <lightning:menuItem label="View Doctors information"/>
+                <lightning:menuItem label="Available Timings"/>
+                <lightning:menuItem label="Back to Home"/>
+ 
+            </lightning:buttonMenu> 
+        </lightning:buttongroup>
+        <!--lightning input fields-->
+        <lightning:input type="text" label="Patient Name" required="true" />
+        <lightning:input type="date" label="Patient DOB" />
+        <lightning:input type="number" label="Patient weight"/>
+        <lightning:input type="text" label="Patient Phone Number" />
+        <lightning:input type="file" label="upload files" required="true" />
+        <lightning:input type="text" label="Referring Physician's Name" />
+        <lightning:input type="address" label="Address"/>
+    
+    
+    
+    </lightning:card>
+	
+</aura:component>
+
+--------------------------------------------------
+
+<!--created the lightning page and placed on the record page-->
+
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <!--created the lightning card-->
+    <lightning:card title="Summer hoildays" footer="End of the hoildays">
+        <!--created the lightning button-->
+        <lightning:button label="Cancel" variant="brand"/>
+        <lightning:button label="Save" variant="brand"/>
+    </lightning:card>
+    <lightning:card>
+        <!--lightning input-->
+        
+        
+        <lightning:input type="text" label="Salutation"/>
+        <lightning:input type="text" label="First Name"/>
+        <lightning:input type="text" label="Last Name" required="true"/>
+        <lightning:input type="email" label="Email"/>
+        <lightning:input type="text" label="Business Phone"/>
+        <lightning:input type="text" label="Title"/>
+        <lightning:input type="text" label="Account" />
+    
+    
+    </lightning:card>
+    
+	
+</aura:component>
+--------------------------------------------------------------------------------
+<!--created the lightning recordpage-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+   <!--created the lightning Card--> 
+    <lightning:card>
+        <!--Created the lightning Button-->
+        <lightning:button label="ON" variant="brand"/>
+        <lightning:button label="OFF" variant="Neutral"/>
+    
+    </lightning:card>
+	
+</aura:component>
+
