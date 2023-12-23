@@ -1,0 +1,112 @@
+<!--First created the Lightning Tab-->
+
+<aura:component implements="force:appHostable" >
+    <!--Crerated the Lightning Card-->
+    <lightning:card title="Vechicle Information" footer="End">
+        <!--created the lightning the buttonGroup-->
+        <lightning:buttongroup>
+            <!--created the lightning button-->
+            <lightning:button label="Log a Call" variant="Neutral"/>
+            <lightning:button label="View Other Cars" variant="Neutral"/>
+            <lightning:button label="New Note" variant="Neutral"/>  
+            <!--created the lightning menu bar-->
+            <lightning:buttonMenu>
+                <lightning:menuItem label="New Case"/>
+                <lightning:menuItem label="New Contact"/>
+                <lightning:menuItem label="Back Home"/>
+            
+            
+            
+            </lightning:buttonMenu>
+        </lightning:buttongroup>
+        
+        <!--created the lightning input fields-->
+        <lightning:input type="text" label="FirstName" Required="true"/>
+        <lightning:input type="date" label="Year"/>
+        <lightning:input type="text" label="Vehicle Make"/>
+        <lightning:input type="text" label="Vehicle Model" Required="true"/>
+        <lightning:input type="color" label="Vehicle Color" Required="true"/>
+        <lightning:input type="text" label="Mileage"/>
+        <lightning:input type="text" label="Address"/>
+        <lightning:input type="file" label="Upload Files" Required="true"/>
+    
+    
+    
+    </lightning:card>
+	
+</aura:component>
+
+-----------------------------------------------------------------------
+
+<!--Crated the Lightning Quick Action-->
+<aura:component implements="force:lightningQuickAction" >
+    <!--Created the lightning card-->
+    <lightning:card title="Salesforce Events" footer="End">
+        <!--created the lightning buttongroup and buttons and buttonmenus-->
+        <lightning:buttongroup>
+            <lightning:button label="View Event Details" variant="brand"/>
+            <lightning:button label="View Speakers" variant="brand"/>
+            <lightning:button label="New Note" variant="brand"/>
+            <lightning:buttonMenu>
+                <lightning:menuItem label="View Location"/>
+                <lightning:menuItem label="Timings"/>
+                <lightning:menuItem label="Back to Home"/>
+            </lightning:buttonMenu>
+        </lightning:buttongroup>
+    </lightning:card>
+    <lightning:card>
+        <!--created the lightning input fields-->
+        <lightning:input type="text" label="Person Name" required="true" />
+        <lightning:input type="text" label="Person Email Address "  />
+        <lightning:input type="text" label="Company Name" />
+        <lightning:input type="text" label="Person Phone Number"/>
+        <lightning:input type="file" label="Upload files" required="true" />
+        <lightning:input type="text" label="Is this First time Visit" />
+        <lightning:input type="text" label="Person Address"/>
+        
+    
+    </lightning:card>
+	
+</aura:component>
+
+----------------------------------------------------------------------------
+<aura:component implements="force:lightningQuickAction" >
+    <aura:attribute name="firstname" type="string"/>
+    <aura:attribute name="LastName" type="string"/>
+    <aura:attribute name="email" type="string"/>
+    <aura:attribute name="Phone" type="string"/>
+    
+    
+   <lightning:card title="New account" footer="Record">
+       <lightning:buttonGroup>
+       <lightning:button label="Log Call" variant="Neutral" />
+       <lightning:button label="New Task" variant="Neutral" iconName="utility:search" iconPosition="right"/>
+       <lightning:button label="Quick Action" variant="brand"/>
+       <lightning:button label="New Record" variant="success"/>
+           
+       <lightning:buttonMenu>
+           <lightning:menuItem label="New Account"/>
+           <lightning:menuItem label="New Contact"/>
+           <lightning:menuItem label="New Opporuntiy"/>
+             
+       </lightning:buttonMenu>
+       </lightning:buttonGroup>
+       
+       
+    <lightning:input type="text" label="Enter frist name" value="{!v.firstname}"/>
+    <lightning:input type="text" label="Enter the Last Name" value="{!v.LastName}"/>
+    <lightning:input type="email" label="Email id" value="{!v.email}"/>
+    <lightning:input type="number" label="Phone No" value="{!v.Phone}"/><br/>
+    
+    
+    
+   <b>Enter the FristName:</b>{!v.firstname}<br/>
+   <b>Enter the lastName:</b>{!v.LastName}<br/>
+   <b>Enter the Email Id:</b>{!v.email}<br/>
+   <b>Entet the Phone No:</b>{!v.Phone}<br/>
+       
+   </lightning:card> 
+	
+</aura:component>
+
+
